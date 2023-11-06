@@ -1,0 +1,174 @@
+.front-container1 {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  max-width: 87vw !important;
+}
+
+.chat-main {
+  min-height: 100% !important;
+}
+
+.chat-top {
+  background-color: #ededed !important;
+  min-height: 50px;
+}
+
+.chat-top-left {
+  border-right: 1px solid #e4e1de;
+}
+
+.left-top-div {
+  display: inline;
+}
+
+.profile-image {
+  margin-top: 7px;
+  height: 35px;
+  width: 35px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.last-seen {
+  font-size: 10px;
+}
+
+.search-input {
+  display: inline !important;
+  width: 100% !important;
+}
+
+.contacts {
+  background-color: #ffffff;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.contact-table-scroll {
+  overflow-y: scroll;
+  height: 88vh;
+}
+
+.message-area {
+  background-color: #e4e1de;
+  /* min-height: 90vh; */
+}
+
+.d-online {
+  color: #00a884;
+  font-size: 20px;
+}
+
+/* .d-offline {
+  color: red;
+} */
+
+.hide-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.msg-info {
+  background-color: #d9fdd3;
+  padding: 0 10px;
+  border-radius: 12px;
+}
+
+.message-table-scroll {
+  overflow-y: scroll;
+  height: 78vh;
+}
+
+.message-box {
+  background-color: #f0f0f0;
+}
+
+.sent-msg {
+  width: auto;
+  float: right !important;
+  max-width: 70%;
+  cursor: pointer;
+}
+
+.sent-msg p {
+  background-color: #d9fdd3;
+  color: black !important;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.get-msg {
+  width: auto;
+  float: left !important;
+  max-width: 70%;
+  cursor: pointer;
+}
+
+.get-msg p {
+  background-color: #f0f2f5;
+  color: black !important;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.row {
+  background-color: #ededed;
+}
+
+.chat-names-left {
+  cursor: pointer;
+}
+
+.chat-time {
+  display: block;
+  font-size: 8px;
+  text-align: right;
+}
+
+.send-btn {
+  border: none;
+}
+
+.btn-div {
+  float: right;
+  margin-right: 2rem;
+}
+
+.logout-btn {
+  font-size: 10px;
+  background-color: #00a884;
+  border: 1px solid transparent;
+  color: #fff;
+  border-radius: 5px;
+  padding: 3px 10px;
+}
+
+.logout-btn:hover {
+  background-color: green;
+}
+
+.left-btn {
+  margin-right: 10px;
+}
+
+.not-seen {
+  font-size: 12px;
+  float: right;
+}
+
+.not-seen-msg {
+  font-weight: bold;
+}
+
+.seen {
+  font-size: 12px;
+  float: right;
+  color: #00a884;
+}
+
+.sent-tick {
+  font-size: 10px !important;
+}

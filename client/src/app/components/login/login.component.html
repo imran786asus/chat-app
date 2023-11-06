@@ -1,0 +1,24 @@
+<div class="container front-container1">
+  <div class="container login-top">
+    <div class="header">Login</div>
+    <form [formGroup]="userLoginForm"  (submit)="onLogin()">
+      <div class="field input-field">
+        <input type="email" formControlName="email" required>
+        <label>Email Address</label>
+      </div>
+      <div class="field input-field">
+        <input type="password" autocomplete="new-password" formControlName="password" required>
+        <label>Password</label>
+      </div>
+      <div class="form-link">
+        <a routerLink="/forget-password" class="forgot-pass">Forgot password?</a>
+      </div>
+      <div class="field button-field">
+        <button>Login</button>
+      </div>
+      <div class="form-link sign-up">
+        <span style="margin-right: 5px;">Don't have an account?</span> <a routerLink="/register">Register now</a>
+      </div>
+    </form>
+  </div>
+</div>

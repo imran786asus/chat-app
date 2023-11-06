@@ -1,0 +1,125 @@
+<div class="container front-container1">
+  <div class="row chat-top">
+    <div class="col-sm-4 chat-top-left">
+      <div class="left-top-div col-sm-5">
+        <img src="{{basePath}}/{{userData.proPic}}" alt="" class="profile-image rounded-circle"
+          (click)="showFileUpload()" (error)="onImgError($event)">
+        <input (change)="onFileSelected($event)" hidden="true" id="imageUpload" name="image" type="file"
+          accept=".png, .jpg, .jpeg" required ngModel #cngPic="ngModel">
+      </div>
+      <div class="mt-2 btn-div col-sm-10" style="margin-right: 0;">
+        <input type="text" class="form-control search-input" placeholder="Search here..." #search>
+          <!-- (click)="onClickRemoveSearch()"> -->
+      </div>
+    </div>
+
+    <ng-container *ngIf="showMessages">
+      <div class="col-sm-8" style="display: flex;">
+        <div class="col-sm-8">
+          <div class="cont" style="display: flex">
+            <img src="{{basePath}}/{{currentFriend.proPic}}" alt="" class="profile-image rounded-circle"
+              (error)="onImgError($event)">
+            <div style="display:flex; flex-direction: column;">
+              <span class="ml-5"><b>{{currentFriend.fullName}}</b></span>
+              <span class="last-seen" *ngIf="currentFriend.isOnline">Online</span>
+              <span class="last-seen" *ngIf="!currentFriend.isOnline && currentFriend.lastLogin">
+                {{currentFriend.lastLogin * 1000 | date: "d/M/yy, h:mm a"}}
+              </span>
+
+            </div>
+          </div>
+        </div>
+        <div class="mt-2 col-sm-4 btn-div">
+          <button class="logout-btn left-btn" (click)="onLogout()">Logout</button>
+          <button class="logout-btn" (click)="onLogoutAllDevices()">Logout from all devices</button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="row chat-bottom">
+    <div class="col-sm-4 contacts">
+      <div class="contact-table-scroll">
+        <table class="table table-hover">
+          <tbody>
+            <ng-container *ngIf="usersList.length">
+              <ng-container>
+                <ng-container *ngFor="let user of usersList">
+                  <tr class="chat-names-left" (click)="onShowMessage(user)">
+                    <td>
+                      <img src="{{basePath}}/{{user.proPic}}" (error)="onImgError($event)" alt=""
+                        class="profile-image rounded-circle">
+                    </td>
+                    <td>
+                      <strong>{{user.fullName}}</strong><br>
+                      <small [ngClass]="!user?.isSeen && !user?.isSent? 'not-seen-msg' : ''">{{ifSearchFriendList ? "@" + user.username : user.message}}</small>
+                      <span *ngIf="user?.isSent" [ngClass]="user?.isSeen ? 'seen' : 'not-seen'">
+                        <i class="fa fa-check" aria-hidden="true"></i>
+                      </span>
+                    </td>
+                    <td>
+                      <small [ngClass]="user.isOnline ? 'd-online' : ''">
+                        {{user.isOnline ? "●" : ""}}
+                      </small>
+                    </td>
+                  </tr>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <div class="col-sm-8 message-area" *ngIf="showMessages">
+      <div class="message-table-scroll" #scrollMe>
+        <ng-container *ngIf="showMessages">
+          <table class="table">
+            <tbody>
+              <ng-container *ngFor="let msg of messageList">
+                <tr class="chat-names" >
+                  <td [ngClass]="msg.isSent ? 'sent-msg' : 'get-msg'">
+                    <p class=" p-2 mt-2 mr-5 shadow-sm text-white float-left">
+                      {{msg.message}}
+                      <span class="chat-time">
+                        {{msg.c_date | date: "h:mm a"}}&nbsp;
+                        <i *ngIf="msg.isSent" [ngClass]="msg.isSeen ? 'sent-tick seen' : 'sent-tick not-seen'" class="fa fa-check" aria-hidden="true"></i>
+                      </span>
+                    </p>
+                  </td><!--11:20 PM-->
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </ng-container>
+      </div>
+      <div class="row message-box p-3">
+        <ng-container *ngIf="showMessages">
+          <div class="col-sm-2 mt-1">
+            <button class="send-btn">
+              <i class="fa fa-smile-o" aria-hidden="true"></i>
+            </button>
+            <button class="send-btn">
+              <i class="fa fa-paperclip" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div class="col-sm-9">
+            <form [formGroup]="messageForm" (ngSubmit)="onSendMessage()">
+              <input type="text" class="form-control message_input" placeholder="Write message..."  formControlName="message">
+            </form>
+
+          </div>
+          <div class="col-sm-1 mt-1">
+            <button class="send-btn" (click)="onSendMessage()">
+              <i class="fa fa-paper-plane"></i>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="hide-message col-sm-8" *ngIf="!showMessages">
+      <div>
+        <p class="msg-info">Select a chat to start messaging</p>
+      </div>
+    </div>
+  </div>
+</div>
