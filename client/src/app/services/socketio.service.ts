@@ -23,7 +23,7 @@ export class SocketioService {
   }
 
   setupSocketConnection() {
-    this.socket = io(environment.SOCKET_ENDPOINT_MYSQL);
+    this.socket = io(environment.SOCKET_ENDPOINT_MONGO);
     this.socket.on("connect", () => {
       this.socket.emit('joinUser', this.userId);
     });

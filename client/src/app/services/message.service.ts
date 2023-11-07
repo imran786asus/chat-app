@@ -8,10 +8,10 @@ import { environment } from 'src/environments/environment';
 })
 export class MessageService {
 
-    // URL: string = environment.DEV_URL_MONGO;
-  // BASE_URL: string = environment.DEV_BASEURL_MONGO;
-  URL: string = environment.DEV_URL_MYSQL;
-  BASE_URL: string = environment.DEV_BASEURL_MYSQL;
+    URL: string = environment.DEV_URL_MONGO;
+  BASE_URL: string = environment.DEV_BASEURL_MONGO;
+  // URL: string = environment.DEV_URL_MYSQL;
+  // BASE_URL: string = environment.DEV_BASEURL_MYSQL;
 
   constructor(private http: HttpClient) { }
 

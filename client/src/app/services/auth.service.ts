@@ -7,10 +7,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  // URL: string = environment.DEV_URL_MONGO;
-  // BASEURL: string = environment.DEV_BASEURL_MONGO;
-  URL: string = environment.DEV_URL_MYSQL;
-  BASEURL: string = environment.DEV_BASEURL_MYSQL;
+  URL: string = environment.DEV_URL_MONGO;
+  BASEURL: string = environment.DEV_BASEURL_MONGO;
+  // URL: string = environment.DEV_URL_MYSQL;
+  // BASEURL: string = environment.DEV_BASEURL_MYSQL;
   userData = new BehaviorSubject({});
   userDataMessage = this.userData.asObservable();
 
@@ -37,7 +37,9 @@ export class AuthService {
   userLogin(data: any): Observable<any> {
     return this.http.post(`${this.URL}/user/login`, data);
   }
-
+  userRegister(data: any): Observable<any> {
+    return this.http.post(`${this.URL}/user/register`, data);
+  }
   getUserLoggedInData(): Observable<any> {
     return this.http.get(`${this.URL}/user/me`);
   }

@@ -45,22 +45,6 @@ class ChatController {
                     data: userData
                 });
             }
-            try {
-                if (!req.user) throw createError.NotFound("Access token required");
-                const { id, email, fullName, firstName, lastName } = req.user;
-    
-                const { address, proPic, phoneNo } = await User.findOne({ _id: id }, {
-                    proPic: 1, address: 1,
-                    phoneNo: 1, _id: 0
-                });
-                res.status(200).json({
-                    status: 200,
-                    message: "Login successfull.",
-                    data: { id, email, fullName, firstName, lastName, address, proPic, phoneNo }
-                });
-            } catch (error) {
-                next(error);
-            }
 
             res.status(200).json({
                 status: 200,
